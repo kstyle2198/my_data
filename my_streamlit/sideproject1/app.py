@@ -44,9 +44,6 @@ with left_col:
         dog_image = Image.open("./src/dog.jpg")
         st.image(dog_image, caption="My Dog")    
 
-
-
-
 with right_col:
 
     st.subheader("Right Column")
@@ -65,10 +62,11 @@ with right_col:
 
 st.markdown("---")
 
-with st.container():
-    st.write("This is inside the container")
-
-    # You can call any Streamlit command, including custom components:
-    st.bar_chart(np.random.randn(50, 3))
-
-st.write("This is outside the container")
+# add Expander Area
+with st.expander("See explanation"):
+     st.write("""
+         The chart above shows some numbers I picked for you.
+         I rolled actual dice for these, so they're *guaranteed* to
+         be random.
+     """)
+     st.bar_chart(np.random.randn(50, 3))
