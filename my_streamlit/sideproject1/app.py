@@ -42,7 +42,7 @@ with left_col:
 
     with st.container():
         dog_image = Image.open("./src/dog.jpg")
-        st.image(dog_image, caption="My Dog")    
+        st.image(dog_image, caption="My Dog", use_column_width=True)    
 
 with right_col:
 
@@ -70,3 +70,54 @@ with st.expander("See explanation"):
          be random.
      """)
      st.bar_chart(np.random.randn(50, 3))
+
+
+# add Plotly chart
+import plotly.figure_factory as ff
+import numpy as np
+
+# Add histogram data
+x1 = np.random.randn(200) - 2
+x2 = np.random.randn(200)
+x3 = np.random.randn(200) + 2
+
+# Group data together
+hist_data = [x1, x2, x3]
+
+group_labels = ['Group 1', 'Group 2', 'Group 3']
+
+# Create distplot with custom bin_size
+fig = ff.create_distplot(
+         hist_data, group_labels, bin_size=[.1, .25, .5])
+
+# Plot!
+st.plotly_chart(fig, use_container_width=True)
+
+st.markdown("---")
+
+# adjust heght of column
+
+import streamlit as st
+empty1,content1,empty2,content2,empty3=st.columns([0.3,1.2,0.3,1.2,0.3])
+with empty1:
+        st.empty()
+with content1:
+        st.write("here is the first column of content.")
+with empty2:
+        st.empty()
+with content2:
+        st.write("here is the second column of content.")
+with empty3:
+        st.empty()
+
+# st.empty test
+import time
+
+with st.empty():
+# with st.container():
+
+     for seconds in range(60):
+         st.write(f"⏳ {seconds} seconds have passed")
+         time.sleep(1)
+     st.write("✔️ 1 minute over!")
+
