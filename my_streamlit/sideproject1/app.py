@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
+import matplotlib.pyplot as plt
 
 # page setting
 st.set_page_config(page_title="My Side Project", page_icon=":dolphin:", layout="wide")
@@ -28,37 +29,65 @@ with st.sidebar:
 # Main body
 
 ## divide columns
-left_col, right_col = st.columns(2)
-with left_col:
+col1, col2, col3 = st.columns(3)
+with col1:
 
-    st.subheader("Left Column")
-
+    st.subheader("요도가와 불꽃놀이의 윤아")
     with st.container():
         st.markdown('''
-        |a|b|c|
-        |-|-|-|
-        |1|2|3|
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque volutpat ac tincidunt vitae semper quis lectus nulla. Sed risus ultricies tristique nulla aliquet enim tortor at.
         ''')
-
     with st.container():
-        dog_image = Image.open("./src/dog.jpg")
-        st.image(dog_image, caption="My Dog", use_column_width=True)    
+        image = Image.open("./src/불꽃놀이.jpg")
+        # image = image.rotate(-90)
+        # fig = plt.figure()
+        # plt.imshow(image)
+        # plt.axis("off")
+        # st.pyplot(fig)
+        st.image(image, caption="오사카 윤아", use_column_width=True)    
 
-with right_col:
+with col2:
+    st.subheader("윤지와 미니언즈")
+    st.empty()
+    with st.container():
+        st.markdown('''
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque volutpat ac tincidunt vitae semper quis lectus nulla. Sed risus ultricies tristique nulla aliquet enim tortor at.
+        ''')
+    with st.container():
+        image = Image.open("./src/미니언즈.jpg")
+  
+        st.image(image, caption="윤지와 미니언즈", use_column_width=True)    
 
-    st.subheader("Right Column")
+with col3:
 
+    st.subheader("롤러코스터는 재밌어!")
+    st.empty()
     with st.container():
         st.markdown('''
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque volutpat ac tincidunt vitae semper quis lectus nulla. Sed risus ultricies tristique nulla aliquet enim tortor at.
         ''')
     with st.container():
     ## insert video
-        video_file = open('./src/20200721_124548.mp4', 'rb')
+        video_file = open('./src/롤러코스터.mp4', 'rb')
         video_bytes = video_file.read()
 
         st.video(video_bytes)
 
+
+st.markdown("---")
+
+# add gif image
+import base64
+
+file_ = open("./src/test6.gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
+file_.close()
+
+st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    unsafe_allow_html=True,
+)
 
 st.markdown("---")
 
@@ -71,6 +100,7 @@ with st.expander("See explanation"):
      """)
      st.bar_chart(np.random.randn(50, 3))
 
+st.markdown("---")
 
 # add Plotly chart
 import plotly.figure_factory as ff
