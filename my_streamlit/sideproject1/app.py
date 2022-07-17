@@ -39,11 +39,6 @@ with col1:
         ''')
     with st.container():
         image = Image.open("./src/불꽃놀이.jpg")
-        # image = image.rotate(-90)
-        # fig = plt.figure()
-        # plt.imshow(image)
-        # plt.axis("off")
-        # st.pyplot(fig)
         st.image(image, caption="오사카 윤아", use_column_width=True)    
 
 with col2:
@@ -79,17 +74,39 @@ st.markdown("---")
 # add gif image
 import base64
 
-file_ = open("./src/test6.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
+col4, col5 = st.columns(2)
 
-st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
-    unsafe_allow_html=True,
-)
+with col4:
+    with st.container():
+        file_ = open("./src/test6.gif", "rb")
+        contents = file_.read()
+        data_url = base64.b64encode(contents).decode("utf-8")
+        file_.close()
+
+        st.markdown(
+            f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+            unsafe_allow_html=True
+        )
+
+with col5:
+    with st.container():
+        st.markdown("""
+        #### 풀이 패, 때 불러 밤이 이름을 속의 있습니다. 별빛이 같이 하늘에는 슬퍼하는 내 책상을 가득 있습니다. 나는 하나에 다하지 벌레는 까닭이요, 별에도 묻힌 별 있습니다. 별 가슴속에 하나에 못 속의 쉬이 새워 사람들의 계십니다. 겨울이 시와 나는 봄이 밤이 너무나 별빛이 무성할 많은 까닭입니다. 당신은 위에도 된 이국 있습니다. 계집애들의 하나에 노새, 옥 위에 한 애기 동경과 피어나듯이 버리었습니다.
+        #### 강아지, 가슴속에 라이너 내린 나는 멀리 하나에 된 있습니다. 패, 추억과 지나고 별들을 이름자 버리었습니다. 별 벌레는 남은 파란 옥 듯합니다. 헤일 애기 것은 계절이 나는 있습니다. 어머니, 가난한 별 가을 하나의 추억과 버리었습니다.
+        """)
 
 st.markdown("---")
+
+
+
+with st.container():
+    image = Image.open("./src/김제나들이.jpg") 
+    image = image.convert("1")
+    st.image(image, caption="ddd", use_column_width=True)    
+
+
+st.markdown("---")
+
 
 # add Expander Area
 with st.expander("See explanation"):
